@@ -45,7 +45,7 @@ extension Base58: Base58Decoding {
 
         let bytes = answer.serialize()
         let leadingOnes = stringBytes.prefix(while: { value in value == Self.alphabetBytes[0]})
-        let leadingZeros: [UInt8] = Array(repeating: 0, count: leadingOnes.count)
+        let leadingZeros = Array<UInt8>(repeating: 0, count: leadingOnes.count)
         return leadingZeros + bytes
     }
 }
