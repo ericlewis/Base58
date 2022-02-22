@@ -50,8 +50,8 @@ final class Base58Tests: XCTestCase {
                 try sut.decode(string: testVector.encodedString)
             ) { error in
                 XCTAssertEqual(
-                    error as! Base58CodingError,
-                    Base58CodingError.invalidDecoding
+                    error as! Base58Error,
+                    Base58Error.invalidDecoding
                 )
             }
         }

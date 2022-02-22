@@ -37,7 +37,7 @@ extension Base58: Base58Decoding {
 
         for character in stringBytes.reversed() {
             guard let alphabetIndex = Self.alphabetBytes.firstIndex(of: character) else {
-                throw Base58CodingError.invalidDecoding
+                throw Base58Error.invalidDecoding
             }
             answer += (i * BigUInt(alphabetIndex))
             i *= Self.radix
