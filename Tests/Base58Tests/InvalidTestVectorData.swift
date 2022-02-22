@@ -30,7 +30,7 @@ let invalidTestVectorData =
         },
         {
             "encodedString": "!@#$%^&*()-_=+~`"
-        },
+        }
     ]
     """
     .data(using: .utf8)!

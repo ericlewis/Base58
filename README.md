@@ -4,7 +4,7 @@
 [![Swift Package Manager compatible](https://img.shields.io/badge/SPM-compatible-orange)](#swift-package-manager)
 [![License](https://img.shields.io/badge/license-MIT-green.svg)](https://github.com/anquii/Base58/blob/main/LICENSE)
 
-An implementation of [Base58](https://en.bitcoinwiki.org/wiki/Base58) in Swift. All credit goes to [keefertaylor](https://github.com/keefertaylor) for publishing the implemention [here](https://github.com/keefertaylor/Base58Swift).
+An implementation of [Base58](https://en.bitcoinwiki.org/wiki/Base58) in Swift. All credit goes to [keefertaylor](https://github.com/keefertaylor) for publishing the implemention [here](https://github.com/keefertaylor/Base58Swift), and to [a2hill](https://github.com/a2hill) for fixing [this](https://github.com/keefertaylor/Base58Swift/issues/18) issue.
 
 ## Platforms
 - macOS 10.15+
