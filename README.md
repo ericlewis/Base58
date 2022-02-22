@@ -20,6 +20,16 @@ Add the following line to your `Package.swift` file:
 ```
 ...or integrate with Xcode via `File -> Swift Packages -> Add Package Dependency...` using the URL of the repository.
 
+## Usage
+
+```swift
+import Base58
+
+let base58: Base58Coding = Base58()
+let encodedString = base58.encode(bytes: bytes)
+let decodedStringBytes = try base58.decode(string: encodedString)
+```
+
 ## License
 
 `Base58` is licensed under the terms of the MIT license. See the [LICENSE](LICENSE) file for more information.
