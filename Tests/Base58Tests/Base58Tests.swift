@@ -1,3 +1,4 @@
+import Foundation
 import XCTest
 @testable import Base58
 
@@ -26,19 +27,21 @@ final class Base58Tests: XCTestCase {
         let sut = self.sut()
 
         for testVector in validTestVectors {
-            let stringBytes = bytes(string: testVector.string)
-            let encodedString = sut.encode(bytes: stringBytes)
-            XCTAssertEqual(encodedString, testVector.encodedString)
+            XCTAssertEqual(
+                sut.encode(data: testVector.string.data(using: .utf8)!),
+                testVector.encodedString
+            )
         }
     }
 
-    func testGivenValidVectorEncodedString_WhenDecode_ThenEqualVectorString() throws {
+    func testGivenValidVectorEncodedString_WhenDecode_ThenEqualVectorStringData() throws {
         let sut = self.sut()
 
         for testVector in validTestVectors {
-            let decodedStringBytes = try sut.decode(string: testVector.encodedString)
-            let testVectorStringBytes = bytes(string: testVector.string)
-            XCTAssertEqual(decodedStringBytes, testVectorStringBytes)
+            XCTAssertEqual(
+                try sut.decode(string: testVector.encodedString),
+                testVector.string.data(using: .utf8)!
+            )
         }
     }
 
@@ -58,16 +61,9 @@ final class Base58Tests: XCTestCase {
     }
 
     func testGivenEncodedString_WithLeadingOnes_WhenDecode_ThenLeadingZeros() throws {
-        let encodedString = "11111111111111111111111111111111"
-        let decodedStringBytes = try sut().decode(string: encodedString)
-        let expectedBytes = Array<UInt8>(repeating: 0, count: 32)
-        XCTAssertEqual(decodedStringBytes, expectedBytes)
-    }
-}
-
-// MARK: - Helpers
-fileprivate extension Base58Tests {
-    func bytes(string: String) -> [UInt8] {
-        [UInt8](string.utf8)
+        XCTAssertEqual(
+            try sut().decode(string: "11111111111111111111111111111111"),
+            Data(repeating: 0, count: 32)
+        )
     }
 }

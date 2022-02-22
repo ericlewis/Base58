@@ -11,9 +11,9 @@ public struct Base58 {
 
 // MARK: - Base58Encoding
 extension Base58: Base58Encoding {
-    public func encode(bytes: [UInt8]) -> String {
+    public func encode(data: Data) -> String {
         var answer = [UInt8]()
-        var integerBytes = BigUInt(Data(bytes))
+        var integerBytes = BigUInt(data)
 
         while integerBytes > 0 {
             let (quotient, remainder) = integerBytes.quotientAndRemainder(dividingBy: Self.radix)
@@ -21,7 +21,7 @@ extension Base58: Base58Encoding {
             integerBytes = quotient
         }
 
-        let prefix = Array(bytes.prefix { $0 == 0 }).map { _ in Self.alphabetBytes[0] }
+        let prefix = Array(data.prefix { $0 == 0 }).map { _ in Self.alphabetBytes[0] }
         answer.insert(contentsOf: prefix, at: 0)
 
         return String(bytes: answer, encoding: .utf8)!
@@ -30,11 +30,11 @@ extension Base58: Base58Encoding {
 
 // MARK: - Base58Decoding
 extension Base58: Base58Decoding {
-    public func decode(string: String) throws -> [UInt8] {
+    public func decode(string: String) throws -> Data {
         var answer = BigUInt(0)
         var i = BigUInt(1)
-        let stringBytes = [UInt8](string.utf8)
 
+        let stringBytes = [UInt8](string.utf8)
         for character in stringBytes.reversed() {
             guard let alphabetIndex = Self.alphabetBytes.firstIndex(of: character) else {
                 throw Base58Error.invalidDecoding
@@ -45,7 +45,7 @@ extension Base58: Base58Decoding {
 
         let bytes = answer.serialize()
         let leadingOnes = stringBytes.prefix(while: { value in value == Self.alphabetBytes[0]})
-        let leadingZeros = Array<UInt8>(repeating: 0, count: leadingOnes.count)
+        let leadingZeros = Data(repeating: 0, count: leadingOnes.count)
         return leadingZeros + bytes
     }
 }
