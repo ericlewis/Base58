@@ -60,8 +60,8 @@ final class Base58Tests: XCTestCase {
     func testGivenEncodedString_WithLeadingOnes_WhenDecode_ThenLeadingZeros() throws {
         let encodedString = "11111111111111111111111111111111"
         let decodedStringBytes = try sut().decode(string: encodedString)
-        let expectedStringBytes = Array<UInt8>(repeating: 0, count: 32)
-        XCTAssertEqual(decodedStringBytes, expectedStringBytes)
+        let expectedBytes = Array<UInt8>(repeating: 0, count: 32)
+        XCTAssertEqual(decodedStringBytes, expectedBytes)
     }
 }
 
