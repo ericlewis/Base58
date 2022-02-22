@@ -3,24 +3,31 @@
 import PackageDescription
 
 let package = Package(
-    name: "Base58Check",
+    name: "Base58",
     platforms: [
         .macOS(.v10_15),
         .iOS(.v13)
     ],
     products: [
         .library(
-            name: "Base58Check",
-            targets: ["Base58Check"]
+            name: "Base58",
+            targets: ["Base58"]
+        )
+    ],
+    dependencies: [
+        .package(
+            url: "https://github.com/attaswift/BigInt.git",
+            .upToNextMajor(from: "5.3.0")
         )
     ],
     targets: [
         .target(
-            name: "Base58Check"
+            name: "Base58",
+            dependencies: ["BigInt"]
         ),
         .testTarget(
-            name: "Base58CheckTests",
-            dependencies: ["Base58Check"]
+            name: "Base58Tests",
+            dependencies: ["Base58"]
         )
     ]
 )
