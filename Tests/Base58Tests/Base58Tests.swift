@@ -45,7 +45,7 @@ final class Base58Tests: XCTestCase {
         }
     }
 
-    func testGivenInvalidVectorEncodedString_WhenDecode_ThenThrowInvalidDecodingError() throws {
+    func testGivenInvalidVectorEncodedString_WhenDecode_ThenThrowInvalidDecodingError() {
         let sut = self.sut()
 
         for testVector in invalidTestVectors {
