@@ -27,7 +27,7 @@ import Base58
 
 let base58: Base58Coding = Base58()
 let encodedString = base58.encode(data: data)
-let decodedStringBytes = try base58.decode(string: encodedString)
+let decodedData = try base58.decode(string: encodedString)
 ```
 
 ## License
