@@ -17,7 +17,7 @@ let package = Package(
     dependencies: [
         .package(
             url: "https://github.com/attaswift/BigInt.git",
-            .upToNextMajor(from: "5.3.0")
+            .exact("5.3.0")
         )
     ],
     targets: [
