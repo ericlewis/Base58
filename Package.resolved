@@ -3,11 +3,11 @@
     "pins": [
       {
         "package": "BigInt",
-        "repositoryURL": "https://github.com/attaswift/BigInt.git",
+        "repositoryURL": "https://github.com/ericlewis/BigInt.git",
         "state": {
-          "branch": null,
-          "revision": "0ed110f7555c34ff468e72e1686e59721f2b0da6",
-          "version": "5.3.0"
+          "branch": "master",
+          "revision": "ef1641b9ec4de6ba48b899816448a9b19f307df2",
+          "version": null
         }
       }
     ]

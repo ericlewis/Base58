@@ -16,8 +16,8 @@ let package = Package(
     ],
     dependencies: [
         .package(
-            url: "https://github.com/attaswift/BigInt.git",
-            .exact("5.3.0")
+            url: "https://github.com/ericlewis/BigInt.git",
+            .branchItem("master")
         )
     ],
     targets: [
